@@ -85,6 +85,7 @@ mainContainer.addEventListener("click", function (event) {
     const description = parent.querySelector(".description").innerText;
     const statusEl = parent.querySelector(".status-name");
     statusEl.innerText = "INTERVIEW";
+    statusEl.classList.remove("text-red-700");
     statusEl.classList.add("text-green-600");
 
     const cardInfo = {
@@ -119,7 +120,8 @@ mainContainer.addEventListener("click", function (event) {
     const statusEl = parent.querySelector(".status-name");
 
     statusEl.innerText = "REJECTED";
-    statusEl.classList.add("text-red-700", "border-red-700");
+    statusEl.classList.remove("text-green-600");
+    statusEl.classList.add("text-red-700");
 
     const cardInfo = {
       jobName,
@@ -180,19 +182,19 @@ function renderInterview() {
   for (let interview of interviewList) {
     console.log(interview);
     let div = document.createElement("div");
-    div.className = "mt-4 flex justify-between bg-white p-3 rounded-[8px]";
+    div.className = "mt-4 flex flex-col gap-2 items-center md:flex-row md:items-start justify-between bg-white p-3 rounded-[8px]";
     div.innerHTML = `
-        <div>
+        <div class="text-center md:text-left">
             <h4 class="job-name text-4 font-bold">${interview.jobName}</h4>
             <p class="position text-[#64748B] mb-[20px]">${interview.position}</p>
             <p class="time text-[#64748B] mb-[20px] text-[14px]">
               ${interview.time}
             </p>
-            <p
+            <span
               class="status-name bg-slate-200 text-green-600 text-[14px] font-medium w-27 text-center rounded-[4px] p-1"
             >
                 ${interview.status}
-            </p>
+            </span>
             <p class="description text-[14px] mb-[20px]">
               ${interview.description}
             </p>
@@ -207,7 +209,7 @@ function renderInterview() {
             <button class="delete-btn btn btn-ghost rounded-full bg-white">
               <i class="fa-regular fa-trash-can"></i>
             </button>
-          </div>`;
+        </div>`;
     filteredSection.appendChild(div);
   }
 }
@@ -224,19 +226,19 @@ function renderRejected() {
   noJobEl.classList.add("hidden");
   for (let rejected of rejectedList) {
     let div = document.createElement("div");
-    div.className = "mt-4 flex justify-between bg-white p-3 rounded-[8px]";
+    div.className = "mt-4 flex flex-col gap-2 items-center md:flex-row md:items-start justify-between bg-white p-3 rounded-[8px]";
     div.innerHTML = `
-        <div>
+        <div class="text-center md:text-left">
             <h4 class="job-name text-4 font-bold">${rejected.jobName}</h4>
             <p class="position text-[#64748B] mb-[20px]">${rejected.position}</p>
             <p class="time text-[#64748B] mb-[20px] text-[14px]">
               ${rejected.time}
             </p>
-            <p
+            <span
               class="status-name bg-slate-200 text-red-700 text-[14px] font-medium w-27 text-center rounded-[4px] p-1"
             >
                 ${rejected.status}
-            </p>
+            </span>
             <p class="description text-[14px] mb-[20px]">
               ${rejected.description}
             </p>
