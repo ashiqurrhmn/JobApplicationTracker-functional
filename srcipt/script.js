@@ -102,10 +102,10 @@ mainContainer.addEventListener("click", function (event) {
     rejectedList = rejectedList.filter(
       (item) => item.jobName != cardInfo.jobName,
     );
+
     if (currentStatus == "rejected-btn") {
       renderRejected();
     }
-
     count();
   } else if (event.target.classList.contains("rejected-btn")) {
     const parent = event.target.parentNode.parentNode;
