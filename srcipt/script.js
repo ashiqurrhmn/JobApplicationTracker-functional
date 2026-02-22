@@ -7,8 +7,11 @@ let rejected = document.getElementById("rejected-count");
 let availableJobs = document.getElementById("available-jobs");
 
 const allCards = document.getElementById("cards");
-
 const mainContainer = document.querySelector("main");
+
+const allBtn = document.getElementById("all-btn");
+const interviewBtn = document.getElementById("interview-btn");
+const rejectedBtn = document.getElementById("rejected-btn");
 
 function count(){
     total.innerText = allCards.children.length;
@@ -19,5 +22,17 @@ function count(){
 count();
 
 function toggleStyle(id){
-    console.log('click', id);
+    allBtn.classList.remove('bg-blue-500', 'text-white');
+    interviewBtn.classList.remove('bg-blue-500', 'text-white');
+    rejectedBtn.classList.remove('bg-blue-500', 'text-white');
+
+    allBtn.classList.add('bg-white', 'text-[#64748B]');
+    interviewBtn.classList.add('bg-white', 'text-[#64748B]');
+    rejectedBtn.classList.add('bg-white', 'text-[#64748B]');
+
+    const selectedBtn = document.getElementById(id);
+
+    selectedBtn.classList.remove('bg-white', 'text-[#64748B]');
+    selectedBtn.classList.add('bg-blue-500', 'text-white');
+    
 }
